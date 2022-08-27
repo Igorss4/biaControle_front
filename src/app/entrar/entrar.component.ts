@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Usuario } from '../model/Usuario';
 import { UsuarioLogin } from '../model/UsuarioLogin';
 import { AuthService } from '../service/auth.service';
 
@@ -11,6 +12,8 @@ import { AuthService } from '../service/auth.service';
 })
 export class EntrarComponent implements OnInit {
   usuarioLogin: UsuarioLogin = new UsuarioLogin();
+
+
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -27,7 +30,7 @@ export class EntrarComponent implements OnInit {
         environment.token = this.usuarioLogin.token;
 
         this.auth.idUsuario = this.usuarioLogin.id;
-        
+
         this.router.navigate(['/inicio']);
       },
       error: (erro) => {
@@ -37,4 +40,6 @@ export class EntrarComponent implements OnInit {
       },
     });
   }
+
+
 }
